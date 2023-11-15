@@ -5,11 +5,16 @@ import ProduceList from "./ProduceList";
 
 function App() {
   return (
-    <React.Fragment>
-      {/* <Header /> */}
-      <MarketScheduleList />
-      <ProduceList />
-    </React.Fragment>
+    <div className="container">
+      <div className="row">
+        <div className="col-8">
+          <ProduceList />
+        </div>
+        <div className="col">
+          <MarketScheduleList />
+        </div>
+      </div>
+    </div>
   );
 }
 

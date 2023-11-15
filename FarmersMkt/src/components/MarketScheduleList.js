@@ -51,12 +51,12 @@ const marketSchedule = [
 
 function Market2({ day, location, hours, booth }) {
   return (
-    <React.Fragment>
+    <div className="market-item">
       <h3>{location}</h3>
       <p>{day}</p>
       <p>{hours}</p>
       <p>{booth}</p>
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -74,7 +74,7 @@ function Market2({ day, location, hours, booth }) {
 
 function MarketList() {
   return (
-    <React.Fragment>
+    <div className="market-list-container">
       {marketSchedule.map((market, index) => (
         <Market2
           day={market.day}
@@ -84,7 +84,7 @@ function MarketList() {
           key={index}
         />
       ))}
-    </React.Fragment>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const availableProduce = [
   {
@@ -271,30 +271,51 @@ const availableProduce = [
 
 function Produce({ month, selection }) {
   return (
-    <React.Fragment>
+    <div className="produce-item">
       <h3>{month}</h3>
       <ul>
         {selection.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </ul>
-      {/* <p>{selection}</p> */}
-    </React.Fragment>
+    </div>
   );
 }
-
 function ProduceList() {
+  const [selectedMonth, setSelectedMonth] = useState(null);
+
+  const handleMonthClick = (month) => {
+    setSelectedMonth(month === selectedMonth ? null : month);
+  };
   return (
-    <React.Fragment>
+    <div className="produce-list-container">
       {availableProduce.map((produce, index) => (
-        <Produce
-          month={produce.month}
-          selection={produce.selection}
-          key={index}
-        />
+        <div key={index} onClick={() => handleMonthClick(produce.month)}>
+          <h3>{produce.month}</h3>
+          {selectedMonth === produce.month && (
+            <ul>
+              {produce.selection.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       ))}
-    </React.Fragment>
+    </div>
   );
 }
+// function ProduceList() {
+//   return (
+//     <React.Fragment>
+//       {availableProduce.map((produce, index) => (
+//         <Produce
+//           month={produce.month}
+//           selection={produce.selection}
+//           key={index}
+//         />
+//       ))}
+//     </React.Fragment>
+//   );
+// }
 
 export default ProduceList;
